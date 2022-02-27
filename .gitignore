@@ -1,0 +1,5 @@
+#  ignore nodes 
+node_modules/
+
+# tokens and id
+config.json
