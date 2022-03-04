@@ -8,6 +8,10 @@ const commands = [
   {
     name: "/help",
     description: "See a list of commands"
+  },
+  {
+    name: "/whereAmI",
+    description: "Returns the server the user is currently active in"
   }]
 
 
@@ -23,7 +27,7 @@ module.exports = {
 
     })
     await interaction.reply(
-      `To submit quotes you would like to see added, please visit "https://github.com/cmokbel1/discord-bot" and submit an issues request\n Commands:\n ${commandText}
+      `To submit quotes you would like to see added, please visit "https://github.com/cmokbel1/discord-bot" and submit an issues request\n Command List:\n ${commandText}
       `
     )
   }
