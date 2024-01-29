@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const quoteables = require('../quotes')
+const quoteables = require('../quotes');
 
 
 
