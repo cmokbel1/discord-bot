@@ -28,22 +28,19 @@ newClient.once('ready', () => {
 //client interaction
 newClient.on('interactionCreate', async interaction => {
   if (!interaction.isCommand()) { 
-    console.log('something is wrong')
    return;
   }
   const command = newClient.commands.get(interaction.commandName)
 
   if (!command) {
-    console.log('something is wrong'); 
      return;
   } 
 
   try {
     await command.execute(interaction);
-    console.log('contents: ' + interaction.options.data)
   } catch (error) {
     console.error('error' + error);
-    await interaction.reply({ content: "This bot ain't that lit", ephemeral: true });
+    await interaction.reply({ content: "This bot ain't that powerful", ephemeral: true });
   }
 })
 // login with token
