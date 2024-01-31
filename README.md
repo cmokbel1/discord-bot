@@ -11,5 +11,5 @@
 * Clone the repository but please make note of changes
 # Contact
 * Claude M
-* https://www.github.io/cmokbel1
+* https://www.claudemokbel.com
 * claudemokbel@gmail.com
