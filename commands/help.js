@@ -21,7 +21,7 @@ module.exports = {
     .setName('help')
     .setDescription('See a list of commands'),
   async execute(interaction) {
-    let commandText = ''
+    let commandText = '';
     commands.forEach(command => {
       commandText += `${command.name} - ${command.description}\n`
 

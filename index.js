@@ -5,13 +5,13 @@ const { token } = require('./config.json');
 const fs = require('node:fs');
 
 //Create new client
-const newClient = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const newClient = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 
 newClient.commands = new Collection();
 //read through command files
 const commandFiles = fs.readdirSync('./commands').filter(file => {
-  return file.endsWith('.js')
-  console.log(file) });
+  return file.endsWith('.js');
+});
 
 for (const file of commandFiles) {
   const command = require(`./commands/${file}`);
@@ -22,23 +22,25 @@ for (const file of commandFiles) {
 
 //Run once when client is ready
 newClient.once('ready', () => {
-  console.log('Ready or not here i cum!');
+  console.log('Ready or not here i come!');
 });
 
 //client interaction
 newClient.on('interactionCreate', async interaction => {
-  console.log(interaction)
-  if (!interaction.isCommand()) return;
-
+  if (!interaction.isCommand()) { 
+   return;
+  }
   const command = newClient.commands.get(interaction.commandName)
 
-  if (!command) return;
+  if (!command) {
+     return;
+  } 
 
   try {
     await command.execute(interaction);
   } catch (error) {
-    console.error(error);
-    await interaction.reply({ content: "This bot ain't that lit", ephemeral: true});
+    console.error('error' + error);
+    await interaction.reply({ content: "This bot ain't that powerful", ephemeral: true });
   }
 })
 // login with token
