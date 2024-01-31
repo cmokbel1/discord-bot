@@ -1,11 +1,16 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const quoteables = require('../quotes');
+const fs = require('node:fs');
 
 async function addQuote(author, quoteString) {
-  await quoteables.push({
-    name: author,
-    quote: quoteString
-  })
+  fs.readFile('quotes.json', function (err, data) {
+    var json = JSON.parse(data)
+    json.quotes.push({
+      "name": `${author}`,
+      "quote": `${quoteString}`
+    })
+    fs.writeFile('quotes.json', JSON.stringify(json), (err) => { if (err) console.log(err) });
+})
+
 };
 
 module.exports = {
@@ -22,7 +27,7 @@ module.exports = {
     const quote = interaction.options.getString('quote');
     try {
       await addQuote(author, quote);
-      return interaction.reply(`Quote successfully added to the list`);
+      return interaction.reply(`${author} - "${quote}", has been successfully added to the list`);
     } 
     catch (error) {
       return interaction.reply("error: " + error);
