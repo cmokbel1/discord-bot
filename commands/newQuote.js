@@ -8,7 +8,6 @@ async function addQuote(author, quoteString) {
       "name": `${author}`,
       "quote": `${quoteString}`
     })
-    console.log(json);
     fs.writeFile('quotes.json', JSON.stringify(json), (err) => { if (err) console.log(err) });
 })
 
