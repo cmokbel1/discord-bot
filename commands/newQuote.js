@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const fs = require('node:fs');
+const { config } = require('../config.json');
 
 async function addQuote(author, quoteString) {
   fs.readFile('quotes.json', function (err, data) {
@@ -22,7 +23,7 @@ module.exports = {
     .addStringOption(option => { return option.setName('quote').setDescription(`Enter quote by author`).setRequired(true)})
     ,
   async execute(interaction) {
-    if (interaction.member.guild.id !== '559450856878243840' || interaction.user.id !== '194641374136500226') return interaction.reply(`This command belongs to the owner`);
+    if (interaction.member.guild.id !== config.user.guildId || interaction.user.id !== config.user.userId) return interaction.reply(`This command belongs to the owner`);
     const author = interaction.options.getString('author');
     const quote = interaction.options.getString('quote');
     try {
