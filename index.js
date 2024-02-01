@@ -1,6 +1,6 @@
 //  require discord.js and token
 const { Client, Collection, Intents } = require('discord.js');
-const { token } = require('./config.json');
+const config = require('./config.json');
 // file system directory
 const fs = require('node:fs');
 
@@ -44,4 +44,4 @@ newClient.on('interactionCreate', async interaction => {
   }
 })
 // login with token
-newClient.login(token);
+newClient.login(config.token.token);
