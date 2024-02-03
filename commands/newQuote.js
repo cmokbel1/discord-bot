@@ -23,7 +23,7 @@ module.exports = {
     .addStringOption(option => { return option.setName('quote').setDescription(`Enter quote by author`).setRequired(true)})
     ,
   async execute(interaction) {
-    if (interaction.member.guild.id !== config.user.guildId || interaction.user.id !== config.user.userId) return interaction.reply(`This command belongs to the owner`);
+    if (interaction.user.id !== config.user.userId) return interaction.reply(`This command belongs to the owner`);
     const author = interaction.options.getString('author');
     const quote = interaction.options.getString('quote');
     try {
