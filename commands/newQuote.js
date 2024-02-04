@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const fs = require('node:fs');
-const { config } = require('../config.json');
+const config = require('../config.json');
 
 async function addQuote(author, quoteString) {
   fs.readFile('quotes.json', function (err, data) {
